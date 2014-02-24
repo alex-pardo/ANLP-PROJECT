@@ -135,7 +135,12 @@ def guess_encoding(data):
 ##Look at re python documentation for details                                           
 
 extractionRules = [
-    re.compile(u'^\*\[\[([\w]+)\]\] \u2192 ([\w]+)$',re.L)]
+    re.compile(u'^\*\[\[([\w]+)\]\] \u2192 ([\w]+)$',re.L), 
+    re.compile(u'^\*\[\[([\w]+)\]\] \u2192 ([\w]+) \([\w]+ \"\'\'[\w]+\'\'\"\)$',re.L),
+    re.compile(u'^\*\[\[([\w]+)\]\] \u2192 ([\w]+) \([\w|\W]+\)$',re.L),
+    re.compile(u'^\*\[\[([\w]+)\]\] \u2192 ([\w]+) ([\w|\W]+)$',re.L),
+    re.compile(u'^\*\[\[([\w]+ [\w]+)\]\] \u2192 ([\w]+ [\w]+)$',re.L),
+    re.compile(u'^\*\[\[([\w]+ [\w]+)\]\] \u2192 ([\w]+ [\w]+) ([\w|\W]+)$',re.L)]
 
 ##inicializing the list of triples to extract
 ##The elements of each triple are:
@@ -165,19 +170,23 @@ len(lines)
 ##WP can change and the results can be different
 
 ##I iterate over all the lines and I appply all the rules.
-##Whe athe application of une rule succeeds I discard the following ones
+##Whe the application of one rule succeeds I discard the following ones
 ##The lines from which no rule is succesful are printed
 
 for linea in lines:
     for ir in range(len(extractionRules)):
         r = extractionRules[ir]
+
         m = re.match(r,linea)
         if not m:
-            print linea
+            #print linea.encode('utf-8')
             continue
         demonymTriples.append((m.group(1), m.group(2), ir))
         break
 print len(demonymTriples), 'triples have been obtained '
+with open('demonyms.csv', 'w') as out_file:
+	for demonym in demonymTriples:
+		out_file.write(str(demonym[0] + ','+ demonym[1] + ',' + str(demonym[2])+'\n'))
 
 ##In my test  (19/09/2013) 295 triples were obtained, obviously  
 ##WP can change and the results can be different.

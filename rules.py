@@ -44,7 +44,7 @@ def parseFile(filename, quiet=True):
 			#Read csv lines
 			for row in data:
 				total_words += 1
-				generateRules(row)
+				generateRules(row, quiet)
 	except Exception as ex:
 		print ex
 
@@ -63,17 +63,17 @@ def generateRules(row, quiet=True):
 			if(country[i]!=denomyn[i]):
 				delList.append(country[i]) #Letter that needs to be removed
 				addList.append(denomyn[i]) #Letter that it is not appearing in the country
-				rule[country[i]] = denomyn[i]
+				#rule[country[i]] = denomyn[i]
 
 		#Case that your country word is finished but you have letters in the denonym yet
 		else:
 			addList.append(denomyn[i])
-			if len(delList) > 0:
-				rule[delList[-1]] = rule[delList[-1]]+denomyn[i]
+			# if len(delList) > 0:
+			# 	rule[delList[-1]] = rule[delList[-1]]+denomyn[i]
 
 	#Case that you is not needed to remove any letter of the country
-	if len(rule)==0:
-		rule[" "]=''.join(addList)
+	if len(delList)==0:
+		#rule[" "]=''.join(addList)
 		delList.append(" ")
 
 	#Prints
@@ -82,7 +82,7 @@ def generateRules(row, quiet=True):
 		print denomyn
 		print "Del list:"+str(delList)
 		print "Add list:"+str(addList)
-		print "Rule:"+str(rule)+"\n"
+		#print "Rule:"+str(rule)+"\n"
 	
 	key = ''.join(delList)
 	value = ''.join(addList)

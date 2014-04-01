@@ -173,7 +173,10 @@ len(lines)
 ##Whe the application of one rule succeeds I discard the following ones
 ##The lines from which no rule is succesful are printed
 
+
 for linea in lines:
+    if '==Irregular forms==' in linea.encode('utf-8'):
+        break
     for ir in range(len(extractionRules)):
         r = extractionRules[ir]
 

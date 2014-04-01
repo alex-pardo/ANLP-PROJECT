@@ -22,6 +22,3 @@ def extractRules():
 	print len(demonyms)
 
 
-
-if __name__ == "__main__":
-    extractRules()

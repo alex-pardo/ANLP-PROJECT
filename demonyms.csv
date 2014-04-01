@@ -1,7 +1,6 @@
 Africa,African,0
 Antarctica,Antarctican,0
 Asia,Asian,0
-Australia,Australian,0
 Europe,European,0
 Abkhazia,Abkhazian,1
 Albania,Albanian,0
@@ -95,10 +94,10 @@ Borneo,Bornean,0
 British Columbia,British Columbian,4
 California,Californian,0
 Cantabria,Cantabrian,0
-Carinthia,Carinthian,0
 Catalonia,Catalan,0
 Corsica,Corsican,0
 Crete,Cretan,0
+Crimea,Crimean,0
 Dalmatia,Dalmatian,0
 Delaware,Delawarean,0
 Extremadura,Extremaduran,0
@@ -147,7 +146,6 @@ Umbria,Umbrian,0
 Utah,Utahn,0
 Wallachia,Wallachian,0
 Alexandria,Alexandrian,0
-Arkansas,Arkansan,0
 Atlanta,Atlantan,0
 Baltimore,Baltimorean,0
 Canberra,Canberran,0
@@ -168,7 +166,6 @@ Rome,Roman,0
 San Antonio,San Antonian,4
 San Diego,San Diegan,4
 San Francisco,San Franciscan,4
-Shanghai,Shanghaian,0
 Sofia,Sofian,0
 Argentina,Argentinian,2
 Bahamas,Bahamian,0
@@ -197,6 +194,7 @@ Athens,Athenian,0
 Ballarat,Ballaratian,0
 Boston,Bostonian,0
 Brisbane,Brisbanian,1
+Bristol,Bristolian,0
 Burgundy,Burgundian,0
 Calgary,Calgarian,0
 Cardiff,Cardiffian,0
@@ -342,6 +340,7 @@ Portugal,Portuguese,0
 Rwanda,Rwandese,1
 Sark,Sarkese,0
 Senegal,Senegalese,0
+Shanghai,Shanghainese,0
 Siam,Siamese,0
 Sikkim,Sikkimese,0
 Suriname,Surinamese,0
@@ -389,48 +388,7 @@ Glasgow,Glaswegian,0
 Norway,Norwegian,0
 Aberdeen,Aberdonian,0
 Dundee,Dundonian,0
-Newport,Newportonian,0
 Oamaru,Oamaruvian,0
 Oslo,Oslovian,0
 Peru,Peruvian,0
 Warsaw,Varsovian,0
-Alsace,Alsatian,2
-Colchester,Colcestrian,0
-Courland,Couronian,2
-Guernsey,Sarnian,2
-Shropshire,Salopian,2
-Tripoli,Tripolitan,2
-Wolverhampton,Wulfrunian,0
-Aberteifi,Cardi,0
-Brussels,Bruxellois,2
-Niger,Nigerien,2
-Normandy,Norman,2
-Nunavut,Nunavummiuq,2
-Odisha,Oriya,0
-Paisley,Buddie,0
-Parma,Parmesan,3
-Picardy,Picard,2
-Seychelles,Seychellois,2
-Twente,Tukker,0
-Bali,Balinese,0
-Balochistan,Balochi,0
-Bashkortostan,Bashkir,0
-Chechnya,Chechen,0
-Ingushetia,Ingush,0
-Java,Javanese,0
-Saxony,Saxon,0
-Tatarstan,Tatar,0
-Annapolis,Annapolitan,0
-Canada,Canadien,3
-Connecticut,Connecticuter,2
-Indianapolis,Indianapolitan,0
-Maine,Mainer,0
-Massachusetts,Bay,3
-Minneapolis,Minneapolitan,0
-Moose Jaw,Moose Javian,4
-Oklahoma,Oklahoman,0
-Quebec,Quebecker,3
-Sydney,Sydneysider,0
-Texas,Texan,2
-Toronto,Torontonian,0
-Wisconsin,Sconnie,2

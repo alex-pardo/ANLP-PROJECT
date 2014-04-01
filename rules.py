@@ -4,21 +4,42 @@
 #Script to generate the rules beetween country and denomyn
 
 import csv
+import matplotlib.pyplot as plt
+import numpy as np
+
 
 count_rules={}
 total_words = 0
 
-def main():
+def showHistogram(filename, THRESHOLD=1, quiet=True):
 	''' Method to main that calls the parseFile method'''
-	parseFile()
-	print "\nFinal rules\n------------\n"+str(count_rules)
+	parseFile(filename, quiet)
+	
+	d = {} 
+	for rule in count_rules:
+		if count_rules[rule] > THRESHOLD:
+			d[rule] = count_rules[rule]
+
+	X = np.arange(len(d))
+	plt.bar(X, d.values(), align='center', width=0.5)
+	plt.xticks(X, d.keys(), rotation='vertical')
+	ymax = max(d.values()) + 1
+	plt.ylim(0, ymax)
+
+	print "\nFinal rules\n------------\n", sorted(count_rules.items(), key=lambda x:x[1], reverse=True)
+	print '\n\n####################################'
+	print 'Total number of rules: ', len(count_rules)
+	print 'Number of rules (occurences >', str(THRESHOLD)+') : ', len(d), '\n\n'
+
+	plt.show()
 
 
-def parseFile():
+
+def parseFile(filename, quiet=True):
 	''' Method to read the demonyms.csv file'''
 	global total_words
 	try:
-		with open('demonyms.csv', 'r') as csvfile:
+		with open(filename, 'r') as csvfile:
 			data = csv.reader(csvfile, delimiter=',')
 			#Read csv lines
 			for row in data:
@@ -28,20 +49,20 @@ def parseFile():
 		print ex
 
 
-def generateRules(row):
+def generateRules(row, quiet=True):
 	''' Method to generate add and delete rules between country or city and denomyn'''
 	country = row[0]
 	denomyn = row[1]
 	addList = [] #List with the new letters in the denonym that you will need to add in the country word
-	delList = [] #List with the letters that you will need to remove in youy contry word
+	delList = [] #List with the letters that you will need to remove in your contry word
 	rule = {}
 
-	#Iterate with the bigger word (normally it is the denomym)
+	#Iterate over the bigger word (normally it is the denomym)
 	for i in xrange(0,len(denomyn)):
 		if i<len(country):
 			if(country[i]!=denomyn[i]):
-				delList.append(country[i]) #Letter that needs to be remove
-				addList.append(denomyn[i]) #Letter that it is not appear in the country
+				delList.append(country[i]) #Letter that needs to be removed
+				addList.append(denomyn[i]) #Letter that it is not appearing in the country
 				rule[country[i]] = denomyn[i]
 
 		#Case that your country word is finished but you have letters in the denonym yet
@@ -56,11 +77,12 @@ def generateRules(row):
 		delList.append(" ")
 
 	#Prints
-	print country
-	print denomyn
-	print "Del list:"+str(delList)
-	print "Add list:"+str(addList)
-	print "Rule:"+str(rule)+"\n"
+	if not quiet:
+		print country
+		print denomyn
+		print "Del list:"+str(delList)
+		print "Add list:"+str(addList)
+		print "Rule:"+str(rule)+"\n"
 	
 	key = ''.join(delList)
 	value = ''.join(addList)
@@ -68,4 +90,8 @@ def generateRules(row):
 		count_rules[key+"-->"+value] += 1
 	else:
 		count_rules[key+"-->"+value] = 1
-main()
+
+	
+
+
+

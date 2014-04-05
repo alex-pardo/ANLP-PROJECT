@@ -9,6 +9,6 @@ import wpDownload as wp
 FILENAME = 'demonyms.csv'
 skipIrregulars = True
 quiet = True
-th = 2
+th = 3
 wp.download(FILENAME, skipIrregulars)
 r.showHistogram(FILENAME, th, quiet)

@@ -17,15 +17,22 @@ def showHistogram(filename, THRESHOLD=1, quiet=True):
 	''' Method to main that calls the parseFile method'''
 	parseFile(filename, quiet)
 	
-	d1 = {} 
-	for rule in count_rules_diff:
-		if count_rules_diff[rule] > THRESHOLD:
-			d1[rule] = count_rules_diff[rule]
+	with open('replace_rules.csv','w') as f:
+		d1 = {} 
+		for rule in count_rules_diff:
+			if count_rules_diff[rule] > THRESHOLD:
+				d1[rule] = count_rules_diff[rule]
+				tmp = rule.split("-->")
+				f.write(tmp[0]+','+tmp[1]+'\n')
 
-	d2 = {}
-	for rule in count_rules_end:
-		if count_rules_end[rule] > THRESHOLD:
-			d2[rule] = count_rules_end[rule]
+	with open('add_rules.csv','w') as f:
+		d2 = {}
+		for rule in count_rules_end:
+			if count_rules_end[rule] > THRESHOLD:
+				d2[rule] = count_rules_end[rule]
+				tmp = rule.split("-->")
+				f.write(tmp[0]+','+tmp[1]+'\n')
+
 
 	X = np.arange(len(d1)+len(d2))
 	plt.bar(X[:len(d1)], d1.values(), align='center', width=0.5, color='blue', label='SUBSTITUTION')

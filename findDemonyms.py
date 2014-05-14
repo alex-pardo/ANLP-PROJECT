@@ -30,14 +30,18 @@ def generateDemonym(place, add, replace):
 
 def matchCandidates(link, candidates):
 	text = page.Page(site, link).getWikiText()
-	if 'demonym' in text.lower():
-		score = 0
-		for candidate in candidates:
-			if findWholeWord(candidate.lower())(text.lower()):
-				score += 1
-		return score
-	else:
-		raise NameError('No demonym')
+	#if 'demonym' in text.lower():
+	score = 0
+	rules = [0]*len(candidates)
+	pos = 0
+	for candidate in candidates:
+		if findWholeWord(candidate.lower())(text.lower()):
+			score += 1
+			rules[pos] += 1
+		pos += 1
+	return score, rules
+	# else:
+	# 	raise NameError('No demonym')
 
 def findWholeWord(w):
     return re.compile(r'\b({0})\b'.format(w), flags=re.IGNORECASE).search
@@ -59,13 +63,18 @@ with open('replace_rules.csv', 'r') as f:
 
 matchings = 0
 test_len = 0
-f = open('cities.csv', 'r')
+f = open('countries.csv', 'r')
 for line in f.readlines():
 	line = line.replace('\n','')
 	try:
 		candidates = generateDemonym(line, add, replace)
-		score = matchCandidates(line, candidates)
-		print line, score
+		score, rules = matchCandidates(line, candidates)
+		if score > 0:
+			matching_rules = []
+			for r in range(0, len(candidates)):
+				if rules[r]:
+					matching_rules.append(candidates[r])
+			print line, ',' ,matching_rules
 		if score > 0:
 			matchings += 1
 		test_len += 1

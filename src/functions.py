@@ -119,26 +119,27 @@ def demonyms_showHistogram(filename, THRESHOLD=1, quiet=True):
 				f.write(tmp[0]+','+tmp[1]+'\n')
 
 
-	X = np.arange(len(d1)+len(d2))
-	plt.bar(X[:len(d1)], d1.values(), align='center', width=0.5, color='blue', label='SUBSTITUTION')
-	plt.hold('on')
 	
-	plt.bar(X[len(d1):], d2.values(), align='center', width=0.5, color='green', label='ENDING->ADDING')
-	plt.xticks(X, d1.keys()+d2.keys(), rotation='vertical')
-	ymax = max(d1.values() + d2.values()) + 1
-	plt.ylim(0, ymax)
-	plt.legend(loc=2)
 
 	if not quiet:
 		print "\nFinal rules\n------------\n", 'DIFF:\n', sorted(count_rules_diff.items(), key=lambda x:x[1], reverse=True), 'ENDING:\n', sorted(count_rules_end.items(), key=lambda x:x[1], reverse=True) 
 	
+		X = np.arange(len(d1)+len(d2))
+		plt.bar(X[:len(d1)], d1.values(), align='center', width=0.5, color='blue', label='SUBSTITUTION')
+		plt.hold('on')
+		
+		plt.bar(X[len(d1):], d2.values(), align='center', width=0.5, color='green', label='ENDING->ADDING')
+		plt.xticks(X, d1.keys()+d2.keys(), rotation='vertical')
+		ymax = max(d1.values() + d2.values()) + 1
+		plt.ylim(0, ymax)
+		plt.legend(loc=2)
+		plt.savefig('rules.png', bbox_inches='tight')
+
 	print '\n\n####################################'
 	print 'Total number of rules: ', len(count_rules_diff)+len(count_rules_end)
 	print 'Number of rules (occurences >', str(THRESHOLD)+') : ', len(d1)+len(d2), '\n\n'
 
-	plt.savefig('rules.png', bbox_inches='tight')
-	if not quiet:
-		plt.show()
+	
 
 
 ''' PARSES THE DEMONYM FILE '''
@@ -244,8 +245,11 @@ def demonyms_parseCitiesAndCountries():
 	        if len(tmp) > 0:
 	            link = tmp[0][0]
 	            print link.encode('utf-8')
-	            if link.encode('utf-8').endswith(re_country.findall(link.encode('utf-8'))[0]):
-	            	countries.append(re_country.findall(link.encode('utf-8'))[0])
+	            try:
+	            	if link.encode('utf-8').endswith(re_country.findall(link.encode('utf-8'))[0]):
+	            		countries.append(re_country.findall(link.encode('utf-8'))[0])
+	            except:
+	            	pass
 	            sc = page.Page(site, link, sectionnumber='1')
 	            try:
 	                text = sc.getWikiText().split('\n')

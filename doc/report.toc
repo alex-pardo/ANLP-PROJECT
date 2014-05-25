@@ -4,5 +4,6 @@
 \contentsline {section}{\numberline {0.3}Description of the problem}{2}{section.0.3}
 \contentsline {section}{\numberline {0.4}Approach}{3}{section.0.4}
 \contentsline {section}{\numberline {0.5}Evaluation}{4}{section.0.5}
-\contentsline {section}{\numberline {0.6}Discussion}{4}{section.0.6}
-\contentsline {section}{\numberline {0.7}Future work}{4}{section.0.7}
+\contentsline {section}{\numberline {0.6}Results}{4}{section.0.6}
+\contentsline {section}{\numberline {0.7}Discussion}{4}{section.0.7}
+\contentsline {section}{\numberline {0.8}Future work}{5}{section.0.8}

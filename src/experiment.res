@@ -6,7 +6,7 @@
 
 ####################################
 Total number of rules:  791
-Number of rules (occurences > 3) :  47 
+Number of rules (occurences >= 3) :  47 
 
 
 ##################################

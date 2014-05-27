@@ -64,8 +64,27 @@ The next document will show the description of the problem, our system approach,
 
 \section{Attached files}
 
-Identifiers of the attached files (classes, functions and script .py files and
-data files when needed)
+The structure of the project is separated into two files: demonym.py and functions.py.
+\begin{itemize}
+\item \textbf{Demonym.py}: Contains the main code which it calls all the methods from function.py. The methods are the following:
+
+\item \textbf{Functions.py}:  Contains all the methods of the system.
+\begin{itemize}
+\item  \textit{demonyms\_downloadDemonymsWP:} Extracts pairs of country-demonym from wp.
+\item  \textit{demonyms\_showHistogram:} Parses the rule file and extracts adding and replacing rules. Finally, shows the histogram.
+\item  \textit{demonyms\_parseFile:} Parses the demonym file.
+\item  \textit{demonyms\_generateRules:} Extracts the rule for a given pair country, demonym.
+\item  \textit{demonyms\_parseCitiesAndCountries:} Download a list of cities  and a list of countries from Wikipedia.
+\item  \textit{demonyms\_generateDemonym:} Generates all the possible demonyms from a given place.
+\item  \textit{demonyms\_matchCandidates:} Finds the given demonym candidates in the WP of the given place.
+\item  \textit{demonyms\_findWholeWord:} Finds a whole word.
+\item  \textit{demonyms\_findDemonyms:} Extracts the rules from the files, reads the sample (i.e places) and perfoms the matching.
+\item  \textit{demonyms\_guessEncoding:} Detects coding and transforms to Unicode
+\end{itemize}
+\end{itemize}
+
+Finally, data files need for the system are the \textbf{cities.csv}, \textbf{countries.csv}, and \textbf{demonyms.csv}.
+%Identifiers of the attached files (classes, functions and script .py files and data files when needed)
 
 \section{Description of the problem}
 
@@ -170,8 +189,11 @@ All this factors are decreasing the accuracy of the system and have to be taken 
 
 \section{Future work}
 
-
-
+As a results shows, the accuracy of the cities is very lower and one improvement could try to obtain better results with the cities. The system had trained using only countries and maybe we could add other trained version of the system using only cities. The behaviour of the transformations needed to convert the country or city into the demonym sometimes differ if you are using cities and countries. For this reason we could include one system trained with the countries and other with the cities. 
+\\\\
+Other important improvement will be increase the complexity of the rules models because our rules models are very simple now. Also, the analyse of the word could be deeper using lexemes and so on.
+\\\\
+Finally, we could try to generalize the rules in order to reduce the rules which they are very specific.
 
 \section*{Appendix}
 \subsection*{Execution results}

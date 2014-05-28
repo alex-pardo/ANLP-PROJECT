@@ -1,4 +1,4 @@
-\documentclass[]{report}
+\documentclass[]{article}
 \usepackage{ucs}
 \usepackage[latin1]{inputenc}
 \usepackage[english]{babel}
@@ -51,7 +51,7 @@ morekeywords={*,...}               % if you want to add more keywords to the set
 
 \begin{document}
 \maketitle
-
+\newpage
 \tableofcontents
 
 \newpage
@@ -66,11 +66,11 @@ The next document will show the description of the problem, our system approach,
 
 The structure of the project is separated into two files: demonym.py and functions.py.
 \begin{itemize}
-\item \textbf{Demonym.py}: Contains the main code which it calls all the methods from function.py. The methods are the following:
+\item \textbf{Demonym.py}: Contains the main code which calls all the methods (which are inside function.py). The methods are the following:
 
-\item \textbf{Functions.py}:  Contains all the methods of the system.
+\item \textbf{Functions.py}:  Contains all the methods of the application.
 \begin{itemize}
-\item  \textit{demonyms\_downloadDemonymsWP:} Extracts pairs of country-demonym from wp.
+\item  \textit{demonyms\_downloadDemonymsWP:} Extracts pairs of country-demonym from Wikipedia.
 \item  \textit{demonyms\_showHistogram:} Parses the rule file and extracts adding and replacing rules. Finally, shows the histogram.
 \item  \textit{demonyms\_parseFile:} Parses the demonym file.
 \item  \textit{demonyms\_generateRules:} Extracts the rule for a given pair country, demonym.
@@ -81,7 +81,11 @@ The structure of the project is separated into two files: demonym.py and functio
 \item  \textit{demonyms\_findDemonyms:} Extracts the rules from the files, reads the sample (i.e places) and perfoms the matching.
 \item  \textit{demonyms\_guessEncoding:} Detects coding and transforms to Unicode
 \end{itemize}
+\item \textbf{Library dependencies:} NLTK, Wikitools, NumPy and Matplotlib.
+
 \end{itemize}
+
+
 
 Finally, data files is not needed, all the data is downloaded.
 %Identifiers of the attached files (classes, functions and script .py files and data files when needed)
@@ -106,7 +110,7 @@ Some examples of this process are:
 As the examples above show, some demonyms are simple a process in which is needed to add or replace ending letters in the original country or city. However, irregular cases are the ones that complicate the task of extracting general rules since are special cases and require a specific norms. We have to assume that we are not going to be able to generate those demonyms that are more difficult because are irregular forms or just because there are few cases.
 
 
-\newpage
+
 \section{Approach}
 
 
@@ -189,11 +193,12 @@ All this factors are decreasing the accuracy of the system and have to be taken 
 
 \section{Future work}
 
-As a results shows, the accuracy of the cities is very lower and one improvement could try to obtain better results with the cities. The system had trained using only countries and maybe we could add other trained version of the system using only cities. The behaviour of the transformations needed to convert the country or city into the demonym sometimes differ if you are using cities and countries. For this reason we could include one system trained with the countries and other with the cities. 
-\\\\
-Other important improvement will be increase the complexity of the rules models because our rules models are very simple now. Also, the analyse of the word could be deeper using lexemes and so on.
-\\\\
-Finally, we could try to generalize the rules in order to reduce the rules which they are very specific.
+As results shows, the accuracy of the cities is very lower and one direct improvement would be trying to obtain better results in the cities. 
+The system had been only trained using countries and maybe we could add other trained version of the system using only cities. The behaviour of the transformations needed to convert the country or city into the demonym sometimes differ if you are using cities and countries. For this reason we could include one system trained with countries and other with cities. 
+
+Another important improvement will be to increase the complexity of the rules models since now are very simple. By analysing the worlds with more detail, we should be able to adapt the rules to more words by using grammatical changes.
+
+Finally, we could try to generalize the rules in order to reduce the rules which they are very specific, suing the same methodology as explained in the previous paragraph.
 
 \section*{Appendix}
 \subsection*{Execution results}
